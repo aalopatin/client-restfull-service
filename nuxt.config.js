@@ -38,12 +38,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
-  ],
+  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth'],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -52,6 +47,15 @@ export default {
     host: 'localhost',
     port: '8081',
     prefix: '/api'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' }
+        }
+      }
+    }
   },
   /*
    ** Build configuration
