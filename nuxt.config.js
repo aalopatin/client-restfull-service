@@ -44,18 +44,28 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    host: 'localhost',
-    port: '8081',
-    prefix: '/api'
+    prefix: '/api',
+    proxy: true
+  },
+  proxy: {
+    '/api': 'http://localhost:8081'
   },
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/auth/login', method: 'post', propertyName: 'token' }
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          user: { url: '/auth/user', method: 'get', propertyName: 'user' },
+          logout: false
         }
       }
+    },
+    redirect: {
+      home: '/'
     }
+  },
+  router: {
+    middleware: ['auth']
   },
   /*
    ** Build configuration
