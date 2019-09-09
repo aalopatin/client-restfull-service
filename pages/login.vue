@@ -20,7 +20,8 @@
         placeholder="Введите пароль"
       ></b-form-input>
     </b-form-group>
-    <b-button type="submit" variant="primary">Войти</b-button>
+    <b-link href="/registration">Зарегистрироваться</b-link>
+    <b-button type="submit" variant="dark">Войти</b-button>
   </b-form>
 </template>
 

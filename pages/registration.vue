@@ -1,10 +1,7 @@
 <template>
-  <b-form class="align-middle" @submit.stop.prevent="onSubmit">
-    <b-form-group
-      id="username-group"
-      label="Имя пользователя:"
-      label-for="username"
-    >
+  <b-card>
+  <b-form @submit.stop.prevent="onSubmit">
+    <b-form-group id="username-group" label="Имя пользователя:" label-for="username">
       <b-form-input
         id="username"
         v-model="$v.form.username.$model"
@@ -44,31 +41,18 @@
         Пароль не может быть пустым!
       </b-form-invalid-feedback>
     </b-form-group>
-    <b-form-group
-      id="password-confirm-group"
-      label="Подтверждение пароля:"
-      label-for="password-confirm"
-    >
+    <b-form-group id="password-confirm-group" label="Подтверждение пароля:" label-for="password-confirm">
       <b-form-input
         id="password-confirm"
         v-model="$v.form.passwordConfirm.$model"
         type="password"
-        :state="
-          $v.form.passwordConfirm.$dirty
-            ? !$v.form.passwordConfirm.$error
-            : null
-        "
+        :state="$v.form.passwordConfirm.$dirty ? !$v.form.passwordConfirm.$error : null"
         aria-describedby="password-confirm-live-feedback"
         placeholder="Введите подтверждение пароля"
-      >
-      </b-form-input>
+      ></b-form-input>
       <b-form-invalid-feedback id="password-confirm-live-feedback">
-        <div v-if="!$v.form.passwordConfirm.required">
-          Подтверждение пароля не может быть пустым!
-        </div>
-        <div v-if="!$v.form.passwordConfirm.sameAsPassword">
-          Пароль и подтверждение не совпадают!
-        </div>
+        <div v-if="!$v.form.passwordConfirm.required">Подтверждение пароля не может быть пустым!</div>
+        <div v-if="!$v.form.passwordConfirm.sameAsPassword">Пароль и подтверждение не совпадают!</div>
       </b-form-invalid-feedback>
     </b-form-group>
     <template v-if="errors.length">
@@ -76,65 +60,64 @@
         {{ error.error }}
       </b-alert>
     </template>
-    <b-button type="submit" variant="primary">Зарегистрироваться</b-button>
+    <b-button type="submit" variant="dark">Зарегистрироваться</b-button>
   </b-form>
+  </b-card>
 </template>
 
 <script>
-import { validationMixin } from 'vuelidate'
-import { required, email, sameAs } from 'vuelidate/lib/validators'
+  import { validationMixin } from 'vuelidate'
+  import { required, email, sameAs } from 'vuelidate/lib/validators'
 
-export default {
-  layout: 'empty',
-  mixins: [validationMixin],
-  data() {
-    return {
+  export default {
+    layout: 'empty',
+    mixins: [validationMixin],
+    data() {
+      return {
+        form: {
+          username: "",
+          email: "",
+          password: "",
+          passwordConfirm: ""
+        },
+        errors: []
+      }
+    },
+    validations: {
       form: {
-        username: '',
-        password: '',
-        passwordConfirm: '',
-        email: ''
-      },
-      errors: []
-    }
-  },
-  validations: {
-    form: {
-      username: {
-        required
-      },
-      password: {
-        required
-      },
-      passwordConfirm: {
-        required,
-        sameAsPassword: sameAs('password')
-      },
-      email: {
-        required,
-        email
-      }
-    }
-  },
-  methods: {
-    onSubmit(event) {
-      this.errors = []
-      this.$v.form.$touch()
-
-      if (this.$v.form.$anyError) {
-        return
-      }
-
-      event.preventDefault()
-
-      this.$axios.post('/registration', this.form).then((response) => {
-        if (response.data.errors) {
-          this.errors = response.data.errors
-        } else {
-          this.$router.push('/')
+        username: {
+          required
+        },
+        password: {
+          required
+        },
+        passwordConfirm: {
+          required,
+          sameAsPassword: sameAs('password')
+        },
+        email: {
+          required,
+          email
         }
-      })
+      }
+    },
+    methods: {
+      onSubmit(event) {
+        this.errors = []
+        this.$v.form.$touch()
+
+        if (this.$v.form.$anyError) {
+          return
+        }
+
+        this.$axios.post('/registration', this.form).then((response) => {
+          if (response.data.errors) {
+            this.errors = response.data.errors
+          } else {
+            this.$router.push('/')
+          }
+        })
+      }
     }
   }
-}
 </script>

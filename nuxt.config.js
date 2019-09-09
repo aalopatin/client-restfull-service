@@ -33,12 +33,16 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    //'@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth'],
+  modules: [
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
+  ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -51,6 +55,7 @@ export default {
     '/api': 'http://localhost:8081'
   },
   auth: {
+    scopeKey: 'roles',
     strategies: {
       local: {
         endpoints: {
@@ -65,7 +70,7 @@ export default {
     }
   },
   router: {
-    middleware: ['auth']
+
   },
   /*
    ** Build configuration

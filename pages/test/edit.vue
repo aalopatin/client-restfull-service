@@ -1,5 +1,5 @@
 <template>
   <div>
-    ГЛАВНАЯ СТРАНИЦА
+    edit.vue
   </div>
 </template>
