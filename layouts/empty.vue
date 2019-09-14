@@ -1,11 +1,9 @@
 <template>
-  <div>
-
-  </div>
+  <nuxt></nuxt>
 </template>
 
 <script>
   export default {
-
+    name: 'empty'
   }
 </script>

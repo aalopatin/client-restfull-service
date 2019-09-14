@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'EmptyForm'
+  name: 'empty-form'
 }
 </script>
 

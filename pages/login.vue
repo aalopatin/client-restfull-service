@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  layout: 'emptyForm',
+  layout: 'empty-form',
   data() {
     return {
       form: {
