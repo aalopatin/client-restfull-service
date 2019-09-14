@@ -1,6 +1,6 @@
 <template>
   <b-card>
-  <b-form @submit.stop.prevent="onSubmit">
+    <b-form @submit.stop.prevent="onSubmit">
     <b-form-group id="username-group" label="Имя пользователя:" label-for="username">
       <b-form-input
         id="username"
@@ -57,7 +57,7 @@
     </b-form-group>
     <template v-if="errors.length">
       <b-alert v-for="error in errors" :key="error.code" show variant="danger">
-        {{ error.error }}
+        {{ error.message }}
       </b-alert>
     </template>
     <b-button type="submit" variant="dark">Зарегистрироваться</b-button>
@@ -70,7 +70,7 @@
   import { required, email, sameAs } from 'vuelidate/lib/validators'
 
   export default {
-    layout: 'empty',
+    layout: 'emptyForm',
     mixins: [validationMixin],
     data() {
       return {
@@ -110,13 +110,12 @@
           return
         }
 
-        this.$axios.post('/registration', this.form).then((response) => {
-          if (response.data.errors) {
-            this.errors = response.data.errors
-          } else {
+        this.$axios.post('/registration', this.form)
+          .then((response) => {
             this.$router.push('/')
-          }
-        })
+          }).catch(({response}) => {
+            this.errors = response.data.subErrors
+          })
       }
     }
   }

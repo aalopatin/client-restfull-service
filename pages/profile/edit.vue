@@ -2,29 +2,39 @@
   <div>
     <h3>{{ $auth.user.username }}</h3>
     <hr>
-    <b-form class="align-middle" @submit.stop.prevent="save">
-      <h6>Изменить основные данные</h6>
+    <b-form @submit.stop.prevent="changeEmail">
+      <h6>Изменить Email</h6>
+      <b-alert v-if="successEmail" variant="success" show>Email успешно изменен!</b-alert>
       <b-form-group id="email-group" label="Email:" label-for="email">
         <b-form-input
           id="email"
-          v-model="$v.form.email.$model"
+          v-model="$v.formEmail.email.$model"
           type="email"
-          :state="$v.form.email.$dirty ? !$v.form.email.$error : null"
+          :state="$v.formEmail.email.$dirty ? !$v.formEmail.email.$error : null"
           aria-describedby="email-live-feedback"
           placeholder="Введите email"
         ></b-form-input>
         <b-form-invalid-feedback id="email-live-feedback">
-          <div v-if="!$v.form.email.required">Email обязателен для ввода!</div>
-          <div v-if="!$v.form.email.email">Email содержит ошибки!</div>
+          <div v-if="!$v.formEmail.required">Email обязателен для ввода!</div>
+          <div v-if="!$v.formEmail.email.email">Email содержит ошибки!</div>
         </b-form-invalid-feedback>
       </b-form-group>
+      <template v-if="errorsEmail.length">
+        <b-alert v-for="error in errorsEmail" :key="error.code" show variant="danger">
+          {{ error.message }}
+        </b-alert>
+      </template>
+      <b-button type="submit" variant="dark">Сохранить</b-button>
+    </b-form>
+    <b-form class="mt-3" @submit.stop.prevent="changePassword">
       <h6>Изменить пароль</h6>
+      <b-alert v-if="successPassword" variant="success" show>Пароль успешно изменен!</b-alert>
       <b-form-group id="password-group" label="Пароль:" label-for="password">
         <b-form-input
           id="password"
-          v-model="$v.form.password.$model"
+          v-model="$v.formPassword.password.$model"
           type="password"
-          :state="$v.form.password.$dirty ? !$v.form.password.$error : null"
+          :state="$v.formPassword.password.$dirty ? !$v.formPassword.password.$error : null"
           aria-describedby="password-live-feedback"
           placeholder="Введите пароль"
         ></b-form-input>
@@ -35,20 +45,20 @@
       <b-form-group id="password-confirm-group" label="Подтверждение пароля:" label-for="password-confirm">
         <b-form-input
           id="password-confirm"
-          v-model="$v.form.passwordConfirm.$model"
+          v-model="$v.formPassword.passwordConfirm.$model"
           type="password"
-          :state="$v.form.passwordConfirm.$dirty ? !$v.form.passwordConfirm.$error : null"
+          :state="$v.formPassword.passwordConfirm.$dirty ? !$v.formPassword.passwordConfirm.$error : null"
           aria-describedby="password-confirm-live-feedback"
           placeholder="Введите подтверждение пароля"
         ></b-form-input>
         <b-form-invalid-feedback id="password-confirm-live-feedback">
-          <div v-if="!$v.form.passwordConfirm.required">Подтверждение пароля не может быть пустым!</div>
-          <div v-if="!$v.form.passwordConfirm.sameAsPassword">Пароль и подтверждение не совпадают!</div>
+          <div v-if="!$v.formPassword.passwordConfirm.required">Подтверждение пароля не может быть пустым!</div>
+          <div v-if="!$v.formPassword.passwordConfirm.sameAsPassword">Пароль и подтверждение не совпадают!</div>
         </b-form-invalid-feedback>
       </b-form-group>
-      <template v-if="errors.length">
-        <b-alert v-for="error in errors" :key="error.code" show variant="danger">
-          {{ error.error }}
+      <template v-if="errorsPassword.length">
+        <b-alert v-for="error in errorsPassword" :key="error.code" show variant="danger">
+          {{ error.message }}
         </b-alert>
       </template>
       <b-button type="submit" variant="dark">Сохранить</b-button>
@@ -65,15 +75,25 @@
     mixins: [validationMixin],
     data() {
       return {
-        errors: []
+        formEmail: {},
+        formPassword: {
+          password: '',
+          passwordConfirm: ''
+        },
+        successEmail: false,
+        successPassword: false,
+        errorsEmail: [],
+        errorsPassword: []
       }
     },
     validations: {
-      form: {
+      formEmail: {
         email: {
           required,
           email
         },
+      },
+      formPassword: {
         password: {
           required
         },
@@ -83,28 +103,43 @@
         }
       }
     },
-    asyncData({$auth}){
-      return {
-        form: {
-            email: $auth.user.email,
-            password: "",
-            passwordConfirm: ""
-          }
-      };
+    async asyncData({$auth, $axios}) {
+
+      let {data} = await $axios.get('/profile/' + $auth.user.id);
+      return {formEmail: data}
+
     },
     methods: {
-      save(event) {
-        this.errors = []
-        this.$v.form.$touch()
+      changeEmail(event) {
+        this.errorsEmail = []
+        this.successEmail = false
+        this.$v.formEmail.$touch()
 
-        if (this.$v.form.$anyError) {
+        if (this.$v.formEmail.$anyError) {
           return
         }
 
-        this.$axios.post('/profile/edit', this.form).then((response) => {
-          if (response.data.errors) {
-            this.errors = response.data.errors
-          }
+        this.$axios.put('/profile/' + this.$auth.user.id + '/email', this.formEmail)
+          .then((response) => {
+            this.successEmail = true
+          }).catch(({response}) => {
+            this.errorsEmail = response.data.subErrors
+        })
+      },
+      changePassword(event) {
+        this.errorsPassword = []
+        this.successPassword = false
+        this.$v.formPassword.$touch()
+
+        if (this.$v.formPassword.$anyError) {
+          return
+        }
+
+        this.$axios.put('/profile/' + this.$auth.user.id + '/password', this.formPassword)
+          .then((response) => {
+            this.successPassword = true
+          }).catch((e) => {
+          this.errorsPassword = response.data.subErrors
         })
       }
     }
