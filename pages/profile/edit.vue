@@ -24,7 +24,7 @@
           {{ error.message }}
         </b-alert>
       </template>
-      <b-button type="submit" variant="dark">Сохранить</b-button>
+      <b-btn type="submit" variant="dark">Сохранить</b-btn>
     </b-form>
     <b-form class="mt-3" @submit.stop.prevent="changePassword">
       <h6>Изменить пароль</h6>
@@ -61,7 +61,7 @@
           {{ error.message }}
         </b-alert>
       </template>
-      <b-button type="submit" variant="dark">Сохранить</b-button>
+      <b-btn type="submit" variant="dark">Сохранить</b-btn>
     </b-form>
   </div>
 </template>
