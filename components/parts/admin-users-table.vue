@@ -1,10 +1,10 @@
 <template>
-  <vue-tabulator ref="usersTable" v-model="usersTable" :options="options"></vue-tabulator>
+    <vue-tabulator ref="userTable" v-model="userTable" :options="options"></vue-tabulator>
 </template>
 
 <script>
   export default {
-    props: ['usersTable'],
+    props: ['userTable'],
     data() {
       return {
         options: {
@@ -26,12 +26,6 @@
           ],
         }
       }
-    },
-    async asyncData({$axios}) {
-
-      let {data} = await $axios.get('/admin/users');
-      return {usersTable: data}
-
     },
   }
 </script>
