@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-btn-toolbar>
-      <b-btn to="/admin/companies">Создать</b-btn>
+      <b-btn to="/admin/companies/create">Создать</b-btn>
     </b-btn-toolbar>
     <vue-tabulator ref="companyTable" v-model="companyTable" :options="options"></vue-tabulator>
   </div>
