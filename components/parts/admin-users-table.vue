@@ -2,7 +2,7 @@
     <vue-tabulator
       ref="userTable"
       v-model="userTable"
-      @row-dbl-click="rowDblClick"
+      @row-click="rowClick"
       :options="options"></vue-tabulator>
 </template>
 
@@ -25,7 +25,7 @@
       }
     },
     methods:{
-      rowDblClick(e, row) {
+      rowClick(e, row) {
         this.$router.push(`/admin/users/${row.getData().id}`)
       }
     }

@@ -6,7 +6,7 @@
     <vue-tabulator
       ref="companyTable"
       v-model="companyTable"
-      @row-dbl-click="rowDblClick"
+      @row-click="rowClick"
       :options="options"></vue-tabulator>
   </div>
 </template>
@@ -27,7 +27,7 @@
       }
     },
     methods:{
-      rowDblClick(e, row) {
+      rowClick(e, row) {
         this.$router.push(`/admin/companies/${row.getData().id}`)
       }
     }
