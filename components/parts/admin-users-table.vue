@@ -1,5 +1,9 @@
 <template>
-    <vue-tabulator ref="userTable" v-model="userTable" :options="options"></vue-tabulator>
+    <vue-tabulator
+      ref="userTable"
+      v-model="userTable"
+      @row-dbl-click="rowDblClick"
+      :options="options"></vue-tabulator>
 </template>
 
 <script>
@@ -15,17 +19,15 @@
             {title:"Email", field:"email", sorter:"string"},
             {title:"Код активации", field:"activationCode"},
             {title:"Активный", field:"active", align:"center", formatter:"tickCross"},
-            {title: "Роли", field: "roles"},
-            {title: "", field:"id", formatter:"link", formatterParams:{
-                label: "ред.",
-                url:(cell) => {
-                  return "/admin/users/" + cell.getValue()
-                }
-              }
-            }
+            {title: "Роли", field: "roles"}
           ],
         }
       }
     },
+    methods:{
+      rowDblClick(e, row) {
+        this.$router.push(`/admin/users/${row.getData().id}`)
+      }
+    }
   }
 </script>
