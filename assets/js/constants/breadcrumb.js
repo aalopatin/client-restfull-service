@@ -13,3 +13,14 @@ export const ADMIN_USERS = [
   {text: 'Основное', to: '/admin'},
   {text: 'Пользователи', to: '/admin/users'},
 ]
+
+export const ADMIN_PERIODS = [
+  {text: 'Основное', to: '/admin'},
+  {text: 'Периоды', to: '/admin/periods'},
+]
+
+export const ADMIN_PERIODS_CREATE = [
+  {text: 'Основное', to: '/admin'},
+  {text: 'Периоды', to: '/admin/periods'},
+  {text: 'Создание', to: '/admin/periods/create'},
+]

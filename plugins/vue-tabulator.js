@@ -10,6 +10,4 @@ import 'tabulator-tables/dist/css/tabulator_simple.min.css'
 // import 'tabulator-tables/dist/css/tabulator.min.css'
 // import 'tabulator-tables/dist/css/tabulator_site.min.css'
 
-Vue.use(VueTabulator, {
-  name: 'vue-tabulator'
-});
+Vue.use(VueTabulator);

@@ -6,6 +6,10 @@
           <b-nav-item to="/admin/" exact exact-active-class="active">Основное</b-nav-item>
           <b-nav-item to="/admin/users" exact exact-active-class="active">Пользователи</b-nav-item>
           <b-nav-item to="/admin/companies" exact exact-active-class="active">Компании</b-nav-item>
+          <b-nav-item v-b-toggle="'reports'">Отчетность</b-nav-item>
+          <b-collapse id="reports" class="ml-3">
+            <b-nav-item to="/admin/periods" exact exact-active-class="active">Периоды</b-nav-item>
+          </b-collapse>
         </b-nav>
       </b-col>
       <b-col cols="10">
