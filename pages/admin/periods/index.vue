@@ -4,18 +4,14 @@
       <b-btn to="/admin/periods/create">Создать</b-btn>
       <b-btn @click="deleteRow" class="ml-1">Удалить</b-btn>
     </b-btn-toolbar>
-    <admin-period-table ref="adminPeriodTable" v-model="periodTable" :options="options"></admin-period-table>
+    <vue-tabulator ref="adminPeriodTable" v-model="periodTable" :options="options"></vue-tabulator>
   </div>
 </template>
 
 <script>
-  import { TabulatorComponent } from 'vue-tabulator';
   import { ADMIN_PERIODS } from "~/assets/js/constants/breadcrumb";
 
   export default {
-    components: {
-      'AdminPeriodTable': TabulatorComponent
-    },
     data() {
       return {
         periodTable: [],

@@ -3,18 +3,14 @@
     <b-btn-toolbar>
       <b-btn to="/admin/companies/create">Создать</b-btn>
     </b-btn-toolbar>
-    <admin-company-table ref="companyTable" v-model="companyTable" @row-click="openCompany" :options="options"></admin-company-table>
+    <vue-tabulator ref="companyTable" v-model="companyTable" @row-click="openCompany" :options="options"></vue-tabulator>
   </div>
 </template>
 
 <script>
-  import { TabulatorComponent } from 'vue-tabulator';
-  import { ADMIN_COMPANIES } from "~/assets/js/constants/breadcrumb";
+  import { ADMIN_COMPANIES } from "~/assets/js/constants/breadcrumb"
 
   export default {
-    components: {
-      'AdminCompanyTable': TabulatorComponent
-    },
     data() {
       return {
         companyTable: [],

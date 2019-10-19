@@ -1,16 +1,12 @@
 <template>
   <div>
-    <admin-users-table ref="userTable" v-model="userTable" @row-click="rowClick" :options="options"></admin-users-table>
+    <vue-tabulator ref="userTable" v-model="userTable" @row-click="rowClick" :options="options"></vue-tabulator>
   </div>
 </template>
 <script>
-  import { TabulatorComponent } from 'vue-tabulator';
   import { ADMIN_USERS } from '~/assets/js/constants/breadcrumb'
 
   export default {
-    components: {
-      'AdminUsersTable': TabulatorComponent
-    },
     data() {
       return {
         userTable: [],
