@@ -18,7 +18,6 @@
         options: {
           layout:"fitColumns",
           selectable: 1,
-          clipboard: true,
           columns: [
             {title:"#", field:"id", sorter:"string"},
             {title:"Начало", field:"startPeriod", sorter:"date"},
