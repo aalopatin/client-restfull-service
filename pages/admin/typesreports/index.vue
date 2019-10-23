@@ -9,6 +9,7 @@
 
 <script>
   import { ADMIN_TYPES_REPORTS } from "~/assets/js/constants/breadcrumb";
+  import { OPTIONS_STANDARD } from "~/assets/js/constants/selectoptions";
 
   export default {
     data() {
@@ -17,9 +18,14 @@
         options: {
           layout:"fitColumns",
           columns: [
-            {title:"#", field:"id", sorter:"number"},
-            {title:"Наименование", field:"title", sorter:"string"},
-            {title:"Стандарт финансовой отчетности", field:"standard", sorter:"string"}
+            {title:"#", field:"id", visible:false},
+            {title:"Наименование", field:"title"},
+            {title:"Стандарт отчетности", field:"standard",
+              formatter:(cell, formatterParams, onRendered) => {
+                const value = cell.getValue()
+                return OPTIONS_STANDARD.find(standard => standard.value === value).text;
+              }
+            }
           ],
         }
       }

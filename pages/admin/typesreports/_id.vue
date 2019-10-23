@@ -52,7 +52,7 @@
         })
     },
     methods: {
-      saveCompany() {
+      saveTypePeriod() {
         this.success = false;
         this.$axios.put(`/admin/typesreports/${this.typeReport.id}`, this.typeReport)
           .then((response) => {

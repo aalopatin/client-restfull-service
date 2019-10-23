@@ -37,3 +37,14 @@ export const ADMIN_TYPES_REPORTS_CREATE = [
   {text: 'Типы отчетов', to: '/admin/typesreports'},
   {text: 'Создание', to: '/admin/typesreports/create'}
 ]
+
+export const ADMIN_GROUPS_PARAMETERS = [
+  BASIC_ADMIN,
+  {text: 'Группы параметров', to: '/admin/groupsparameters'},
+]
+
+export const ADMIN_GROUPS_PARAMETERS_CREATE = [
+  BASIC_ADMIN,
+  {text: 'Группы параметров', to: '/admin/groupsparameters'},
+  {text: 'Создание', to: '/admin/groupsparameters/create'}
+]
