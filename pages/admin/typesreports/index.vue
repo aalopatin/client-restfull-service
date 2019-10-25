@@ -9,7 +9,7 @@
 
 <script>
   import { ADMIN_TYPES_REPORTS } from "~/assets/js/constants/breadcrumb";
-  import { OPTIONS_STANDARD } from "~/assets/js/constants/selectoptions";
+  import { OPTIONS_STANDARD } from "~/assets/js/constants/options";
 
   export default {
     data() {

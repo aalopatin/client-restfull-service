@@ -10,7 +10,7 @@
 <script>
   import { ADMIN_GROUPS_PARAMETERS } from '~/assets/js/constants/breadcrumb'
 
-  import { OPTIONS_STANDARD } from '~/assets/js/constants/selectoptions'
+  import { OPTIONS_STANDARD } from '~/assets/js/constants/options'
 
   export default {
     data() {

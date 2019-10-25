@@ -48,3 +48,14 @@ export const ADMIN_GROUPS_PARAMETERS_CREATE = [
   {text: 'Группы параметров', to: '/admin/groupsparameters'},
   {text: 'Создание', to: '/admin/groupsparameters/create'}
 ]
+
+export const ADMIN_PARAMETERS = [
+  BASIC_ADMIN,
+  {text: 'Параметры', to: '/admin/parameters'},
+]
+
+export const ADMIN_PARAMETERS_CREATE = [
+  BASIC_ADMIN,
+  {text: 'Параметры', to: '/admin/parameters'},
+  {text: 'Создание', to: '/admin/parameters/create'}
+]

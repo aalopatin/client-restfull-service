@@ -20,7 +20,7 @@
         label="Тип отчета: "
         label-for="input-typeReport"
       >
-        <b-form-select id="input-typeReport" v-model="groupParameters.typeReport" :options="optionsTypesReports"></b-form-select>
+        <b-form-select id="input-typeReport" v-model="groupParameters.typeReportId" :options="optionsTypesReports"></b-form-select>
       </b-form-group>
       <b-form-checkbox
         id="checkbox-basic"
@@ -44,7 +44,7 @@
           id: null,
           title: null,
           basic: null,
-          typeReport: null
+          typeReportId: null
         },
         success: false,
         optionsTypesReports: []

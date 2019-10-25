@@ -11,6 +11,7 @@
             <b-nav-item to="/admin/periods" exact exact-active-class="active">Периоды</b-nav-item>
             <b-nav-item to="/admin/typesreports" exact exact-active-class="active">Типы отчетов</b-nav-item>
             <b-nav-item to="/admin/groupsparameters" exact exact-active-class="active">Группы параметров</b-nav-item>
+            <b-nav-item to="/admin/parameters" exact exact-active-class="active">Параметры</b-nav-item>
           </b-collapse>
         </b-nav>
       </b-col>
