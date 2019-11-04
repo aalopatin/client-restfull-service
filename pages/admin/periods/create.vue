@@ -2,9 +2,15 @@
   <div>
     <h5>Создать новый период отчетности</h5>
     <b-form @submit.stop.prevent="createPeriod">
-      <span>Начало периода: </span><b-form-input v-model="period.startPeriod" :type="'date'"></b-form-input>
-      <span>Окончание периода периода: </span><b-form-input v-model="period.endPeriod" :type="'date'"></b-form-input>
-      <span>Тип периода: </span><b-form-select v-model="period.type" :options="optionsType"></b-form-select>
+      <b-form-group label="Начало периода: " label-for="startPeriod" label-cols="4">
+        <date-picker id="startPeriod" v-model="period.startPeriod"> </date-picker>
+      </b-form-group>
+      <b-form-group label="Окончание периода периода: " label-for="endPeriod" label-cols="4">
+        <date-picker id="endPeriod" v-model="period.endPeriod"> </date-picker>
+      </b-form-group>
+      <b-form-group label="Тип периода: " label-for="type" label-cols="4">
+        <b-form-select id="type" v-model="period.type" :options="optionsType"></b-form-select>
+      </b-form-group>
       <br>
       <b-btn type="submit" variant="dark">Создать</b-btn>
     </b-form>
@@ -13,8 +19,9 @@
 <script>
   import { ADMIN_PERIODS_CREATE } from '~/assets/js/constants/breadcrumb'
   import { OPTIONS_TYPE_PERIOD } from '~/assets/js/constants/options'
-
+  import DatePicker from '~/components/datepicker'
   export default {
+    components: { DatePicker },
     data() {
       return {
         period: {

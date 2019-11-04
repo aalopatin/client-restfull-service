@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarBrand></NavbarBrand>
+    <navbar-brand></navbar-brand>
     <b-container fluid class="mt-3">
       <b-row>
         <b-col md order-md="first">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import NavbarBrand from '../components/navbar-brand'
+import NavbarBrand from '~/components/NavbarBrand'
 export default {
   components: { NavbarBrand }
 }

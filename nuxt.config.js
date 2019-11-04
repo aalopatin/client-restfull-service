@@ -24,7 +24,8 @@ export default {
    ** Global CSS
    */
   css: [
-    '@/assets/css/custom.scss'
+    '@/assets/css/bootstrap-custom.scss',
+    '@/assets/css/datepick-custom.scss'
   ],
   /*
    ** Plugins to load before mounting the App

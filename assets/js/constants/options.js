@@ -1,5 +1,5 @@
 export const OPTIONS_TYPE_PERIOD = [
-  {value: null, text: "Выберите тип периода"},
+  {value: "", text: ""},
   {value: "DATE", text: "Дата"},
   {value: "MONTH", text: "Месяц"},
   {value: "TREEMONTHS", text: "Три месяца(первый квартал)"},
@@ -11,7 +11,7 @@ export const OPTIONS_TYPE_PERIOD = [
 ]
 
 export const OPTIONS_STANDARD = [
-  {value: null, text: "Стандарт не выбран"},
+  {value: "", text: ""},
   {value: "RSBU", text: "РСБУ"},
   {value: "IFRS", text: "МСФО"},
   {value: "GAAP", text: "US GAAP"},

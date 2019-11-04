@@ -29,6 +29,6 @@
 
 <script>
 export default {
-  name: 'navbar-brand'
+  name: 'NavbarBrand'
 }
 </script>

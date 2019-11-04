@@ -8,12 +8,10 @@
 </template>
 
 <script>
-  import NavbarBrand from '~/components/navbar-brand'
+  import NavbarBrand from '~/components/NavbarBrand'
   export default {
     name: 'admin',
     middleware: 'admin',
-    components: {
-      NavbarBrand
-    }
+    components: {NavbarBrand}
   }
 </script>

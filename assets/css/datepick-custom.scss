@@ -1,0 +1,10 @@
+.vdpComponent{
+  font-size: medium;
+}
+
+.vdpComponent  > input {
+  @extend .form-control;
+}
+
+@import 'bootstrap-custom';
+@import 'vue-date-pick/dist/vueDatePick.css';

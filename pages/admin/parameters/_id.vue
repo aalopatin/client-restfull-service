@@ -36,7 +36,7 @@
 </template>
 <script>
   import { ADMIN_PARAMETERS } from '~/assets/js/constants/breadcrumb'
-  import { getOptionsGroupParameters } from '~/assets/js/options'
+  import { getOptionsGroupParameters } from '~/assets/js/modules/options'
 
   export default {
     data() {

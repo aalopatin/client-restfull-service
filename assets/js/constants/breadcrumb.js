@@ -11,6 +11,11 @@ export const ADMIN_COMPANIES_CREATE = [
   {text: 'Создание', to: '/admin/companies/create'}
 ]
 
+export const ADMIN_COMPANIES_REPORTS_CREATE = [
+  BASIC_ADMIN,
+  {text: 'Компании', to: '/admin/companies'},
+]
+
 export const ADMIN_USERS = [
   BASIC_ADMIN,
   {text: 'Пользователи', to: '/admin/users'}

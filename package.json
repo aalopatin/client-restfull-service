@@ -16,8 +16,10 @@
     "@nuxtjs/axios": "^5.3.6",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.1",
+    "moment": "^2.24.0",
     "nuxt": "^2.9.2",
     "tabulator-tables": "^4.4.1",
+    "vue-date-pick": "^1.2.1",
     "vue-recaptcha": "^1.2.0",
     "vue-tabulator": "^1.2.1",
     "vuelidate": "^0.7.4"

@@ -13,4 +13,8 @@ export const mutations = {
   pushActive(state, title) {
     state.items.push({text: title, active: true})
   },
+  pushNext(state, payloads) {
+    const count = state.items.length
+    state.items.push({text: payloads.title, to: state.items[count - 1].to + payloads.url})
+  },
 }
