@@ -17,3 +17,15 @@ export const OPTIONS_STANDARD = [
   {value: "GAAP", text: "US GAAP"},
   {value: "OTHER", text: "прочее"}
 ]
+
+export const OPTIONS_MULTIPLICITY = [
+  {value: 1, text: ""},
+  {value: 1000, text: "тыс."},
+  {value: 1000000, text: "млн."},
+  {value: 1000000000, text: "млрд."}
+]
+
+export const OPTIONS_CURRENCY = [
+  {value: "RUB", text: "руб."},
+  {value: "USD", text: "долл."}
+]

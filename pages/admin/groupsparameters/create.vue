@@ -34,6 +34,8 @@
 </template>
 <script>
   import { ADMIN_GROUPS_PARAMETERS_CREATE } from '~/assets/js/constants/breadcrumb'
+  import { getOptionsTypesReport } from '~/assets/js/modules/optionsVue'
+
 
   export default {
     data() {
@@ -48,15 +50,7 @@
     },
     async asyncData({ $axios }) {
       let { data } = await $axios.get(`/admin/typesreports`);
-      let typesReports = data.map(
-        function(typeReports){
-          return {
-            value: typeReports.id,
-            text: typeReports.title + " (" + typeReports.standard + ")"
-          }
-        }
-      )
-      return {optionsTypesReports: typesReports}
+      return {optionsTypesReports: getOptionsTypesReport(data)}
     },
     async fetch({ store }) {
       store.commit('breadcrumb/set', ADMIN_GROUPS_PARAMETERS_CREATE)

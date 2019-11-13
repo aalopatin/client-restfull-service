@@ -12,3 +12,18 @@ export function getOptionsGroupParameters(groups, typesReport){
     }
   )
 }
+
+export function getOptionsTypesReport(typesReport) {
+  return typesReport.map(
+    function(typeReport){
+      return {
+        value: typeReport.id,
+        text: getTextTypeReport(typeReport)
+      }
+    }
+  )
+}
+
+export function getTextTypeReport(typeReport) {
+  return typeReport.title + ' (' + OPTIONS_STANDARD.find(standard => standard.value === typeReport.standard).text  + ')'
+}

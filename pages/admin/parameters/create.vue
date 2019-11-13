@@ -34,7 +34,7 @@
 </template>
 <script>
   import { ADMIN_PARAMETERS_CREATE } from '~/assets/js/constants/breadcrumb'
-  import { getOptionsGroupParameters } from '~/assets/js/modules/options'
+  import { getOptionsGroupParameters } from '~/assets/js/modules/optionsVue'
 
 
   export default {

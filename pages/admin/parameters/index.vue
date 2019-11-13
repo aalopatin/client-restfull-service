@@ -10,6 +10,7 @@
 <script>
   import { ADMIN_PARAMETERS } from '~/assets/js/constants/breadcrumb'
   import { OPTIONS_STANDARD } from '~/assets/js/constants/options'
+  import { getTableParameters } from '~/assets/js/modules/tables'
 
   export default {
     data() {
@@ -47,16 +48,7 @@
       let groups = data.payloads.groups;
       let typesReport = data.payloads.typesReport;
 
-      let parameters = data.data.map(
-        function(parameter){
-          return {
-            id: parameter.id,
-            title: parameter.title,
-            groupId: parameter.groupId,
-            typeReportId: groups.find(group => group.id === parameter.groupId).typeReportId
-          }
-        }
-      )
+      let parameters = getTableParameters(data.data, groups)
 
       return {
         parameterTable: parameters,

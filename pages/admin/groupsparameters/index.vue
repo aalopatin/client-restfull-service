@@ -11,6 +11,7 @@
   import { ADMIN_GROUPS_PARAMETERS } from '~/assets/js/constants/breadcrumb'
 
   import { OPTIONS_STANDARD } from '~/assets/js/constants/options'
+  import { getTextTypeReport } from '~/assets/js/modules/optionsVue'
 
   export default {
     data() {
@@ -26,7 +27,7 @@
           groupBy:(data) => { return data.typeReport.id },
           groupHeader:(value, count, data) => {
             let typeReport = data[0].typeReport;
-            return typeReport.title + ' (' + OPTIONS_STANDARD.find(standard => standard.value === typeReport.standard).text  + ')'
+            return getTextTypeReport(typeReport)
           },
           columns: [
             {title:"#", field:"id", sorter:"number", visible:false},

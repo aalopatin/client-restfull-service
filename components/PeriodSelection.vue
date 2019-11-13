@@ -16,10 +16,10 @@
       </b-form>
       <b-form-group
         id="fieldset-typePeriods"
-        label-for="typePeriod"
+        label-for="typePeriods"
         label="Типы периодов:"
       >
-        <b-select id="typePeriod" v-model="filterTypePeriod" :options="optionsTypePeriod"></b-select>
+        <b-select id="typePeriods" v-model="filterTypePeriod" :options="optionsTypePeriod"></b-select>
       </b-form-group>
       <b-row>
         <b-col cols="6">
