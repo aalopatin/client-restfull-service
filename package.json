@@ -16,12 +16,14 @@
     "@nuxtjs/axios": "^5.3.6",
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.1",
+    "lodash.mergewith": "^4.6.2",
     "moment": "^2.24.0",
     "nuxt": "^2.9.2",
-    "tabulator-tables": "^4.4.1",
+    "tabulator-tables": "^4.5.0",
     "vue-date-pick": "^1.2.1",
     "vue-recaptcha": "^1.2.0",
     "vue-tabulator": "^1.2.1",
+    "vue-tabulator-tables": "^0.1.7",
     "vuelidate": "^0.7.4"
   },
   "devDependencies": {

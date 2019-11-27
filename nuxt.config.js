@@ -31,7 +31,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/vue-tabulator'
+    '~/plugins/vue-tabulator',
+    '~/plugins/vue-tabulator-tables'
   ],
   /*
    ** Nuxt.js dev-modules

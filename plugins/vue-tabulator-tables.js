@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueTabulator from 'vue-tabulator';
+import VueTabulatorTables from 'vue-tabulator-tables';
 import 'tabulator-tables/dist/css/tabulator_simple.min.css'
 
-Vue.use(VueTabulator);
+Vue.use(VueTabulatorTables);
