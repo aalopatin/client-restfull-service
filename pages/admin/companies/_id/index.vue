@@ -28,15 +28,23 @@
         <b-btn-toolbar>
           <b-btn class="ml-1" variant="dark" :to="$route.fullPath + '/reports/create'">Создать</b-btn>
         </b-btn-toolbar>
-        <vue-tabulator ref="reportTable" v-model="reportTable" :options="options"></vue-tabulator>
+        <tabulator ref="reportTable" v-model="reportTable" :options="options"></tabulator>
+      </b-tab>
+      <b-tab title="Настройки">
+        <h5>Настройки отчетов</h5>
+        <hr>
+        <settings-reports :company-id="company.id"></settings-reports>
       </b-tab>
     </b-tabs>
   </div>
 </template>
 <script>
   import { ADMIN_COMPANIES } from '~/assets/js/constants/breadcrumb'
+  import Tabulator from '~/components/Tabulator'
+  import SettingsReports from "../../../../components/SettingsReports";
 
   export default {
+    components: {SettingsReports, Tabulator },
     data() {
       return {
         company: {

@@ -23,13 +23,14 @@
     },
     data() {
       return {
-        tabulator: null
+        tabulator: null,
+        tableData: []
       }
     },
     computed: {
       resolvedOptions: function () {
         return {
-          data: this.value,
+          data: this.tableData,
           ...this.options,
         }
       }
@@ -37,6 +38,7 @@
     watch: {
       value: {
         handler () {
+          this.tableData.splice(0, this.tableData.length, ...this.value)
           this.updateData()
         },
         deep: true
@@ -50,13 +52,16 @@
     },
     methods: {
       createTable() {
+        if(this.tabulator !== null) {
+          this.tableData.splice(0, this.tableData.length, ...this.tabulator.getData())
+        }
         this.tabulator = new Tabulator(
           this.$refs.table,
           this.resolvedOptions
         );
       },
       updateData() {
-        this.tabulator.setData(this.value)
+        this.tabulator.setData(this.tableData)
       },
       getInstance() {
         return this.tabulator

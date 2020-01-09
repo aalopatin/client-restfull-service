@@ -37,6 +37,10 @@
 <script>
   import { ADMIN_GROUPS_PARAMETERS } from '~/assets/js/constants/breadcrumb'
 
+  import { findAllTypeReportAPI } from '~/assets/js/API/typeReport'
+
+  import { selectOptionsTypeReport } from '~/assets/js/modules/convertion'
+
   export default {
     data() {
       return {
@@ -52,16 +56,9 @@
     },
     async asyncData({params, $axios, error, store}) {
 
-      let types = await $axios.get(`/admin/typesreports`);
-      let dataTypes = types.data;
-      let typesReports = dataTypes.map(
-        function(typeReports){
-          return {
-            value: typeReports.id,
-            text: typeReports.title + " (" + typeReports.standard + ")"
-          }
-        }
-      )
+
+      let resultTypeReport = await findAllTypeReportAPI($axios)
+      let typesReports = selectOptionsTypeReport(resultTypeReport.data, true)
 
       let { data } = await $axios.get(`/admin/groupsparameters/${params.id}`);
 

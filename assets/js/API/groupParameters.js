@@ -1,8 +1,8 @@
 import {isEmpty} from "../modules/utils";
 
-const url = `/admin/parameters`
+const url = `/admin/groupsparameters`
 
-export const findAllParameters = function($axios, params = {}){
+export const findAllGroupParametersAPI = function($axios, params = {}){
 
   return $axios.get(url, isEmpty(params) ? {} : { params: params })
     .then(result =>
@@ -12,6 +12,5 @@ export const findAllParameters = function($axios, params = {}){
 }
 
 export default {
-  findAll: findAllParameters
+  findAll: findAllGroupParametersAPI
 }
-

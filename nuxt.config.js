@@ -1,3 +1,5 @@
+import { sortRoutes } from '@nuxt/utils'
+
 export default {
   mode: 'universal',
   /*
@@ -25,14 +27,17 @@ export default {
    */
   css: [
     '@/assets/css/bootstrap-custom.scss',
-    '@/assets/css/datepick-custom.scss'
-  ],
+    '@/assets/css/datepick-custom.scss',
+    '@/assets/css/tabulator-custom.scss',
+    // 'tabulator-tables/dist/css/bootstrap/tabulator_bootstrap4.min.css',
+    // 'tabulator-tables/dist/css/semantic-ui/tabulator_semantic-ui.min.css',
+    // 'tabulator-tables/dist/css/tabulator_simple.min.css'
+],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/vue-tabulator',
-    '~/plugins/vue-tabulator-tables'
+    '~/plugins/fontawesome'
   ],
   /*
    ** Nuxt.js dev-modules
@@ -40,6 +45,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     //'@nuxtjs/eslint-module'
+    '@nuxtjs/vuetify'
   ],
   /*
    ** Nuxt.js modules
@@ -81,6 +87,27 @@ export default {
   },
   router: {
 
+  },
+  /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
   },
   /*
    ** Build configuration

@@ -6,6 +6,6 @@ export const parametersValues = (parameters) => {
   return values
 }
 
-// export default {
-//   parametersValuesSelectTabulator: parametersValuesSelectTabulator
-// }
+export default {
+  parametersValues: parametersValues
+}

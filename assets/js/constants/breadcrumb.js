@@ -64,3 +64,14 @@ export const ADMIN_PARAMETERS_CREATE = [
   {text: 'Параметры', to: '/admin/parameters'},
   {text: 'Создание', to: '/admin/parameters/create'}
 ]
+
+export const ADMIN_SETTINGS_REPORTS = [
+  BASIC_ADMIN,
+  {text: 'Настройки отчетов', to: '/admin/settingsreports'},
+]
+
+export const ADMIN_SETTINGS_REPORTS_CREATE = [
+  BASIC_ADMIN,
+  {text: 'Настройки отчетов', to: '/admin/settingsreports'},
+  {text: 'Создание', to: '/admin/settingsreports/create'}
+]

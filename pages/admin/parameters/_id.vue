@@ -36,7 +36,7 @@
 </template>
 <script>
   import { ADMIN_PARAMETERS } from '~/assets/js/constants/breadcrumb'
-  import { getOptionsGroupParameters } from '~/assets/js/modules/optionsVue'
+  import { selectOptionsGroupParameters} from '~/assets/js/modules/convertion'
 
   export default {
     data() {
@@ -56,12 +56,12 @@
 
       let parameter = data.data
       let groups = data.payloads.groups;
-      let typesReport = data.payloads.typesReport;
+      let typesReports = data.payloads.typesReport;
 
       store.commit('breadcrumb/set', ADMIN_PARAMETERS)
       store.commit('breadcrumb/pushActive', parameter.title)
 
-      return {parameter: parameter, optionsGroupParameters: getOptionsGroupParameters(groups, typesReport)}
+      return {parameter: parameter, optionsGroupParameters: selectOptionsGroupParameters(groups, typesReports)}
 
     },
     methods: {

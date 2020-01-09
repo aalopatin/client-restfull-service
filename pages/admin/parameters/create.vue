@@ -34,7 +34,7 @@
 </template>
 <script>
   import { ADMIN_PARAMETERS_CREATE } from '~/assets/js/constants/breadcrumb'
-  import { getOptionsGroupParameters } from '~/assets/js/modules/optionsVue'
+  import { selectOptionsGroupParameters} from '~/assets/js/modules/convertion'
 
 
   export default {
@@ -52,9 +52,9 @@
       let { data } = await $axios.get(`/forms/create/parameters`);
 
       let groups = data.payloads.groups;
-      let typesReport = data.payloads.typesReport;
+      let typesReports = data.payloads.typesReport;
 
-      return {optionsGroupParameters: getOptionsGroupParameters(groups, typesReport)}
+      return {optionsGroupParameters: selectOptionsGroupParameters(groups, typesReports, true)}
     },
     async fetch({ store }) {
       store.commit('breadcrumb/set', ADMIN_PARAMETERS_CREATE)
