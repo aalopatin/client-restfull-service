@@ -11,7 +11,6 @@ export const OPTIONS_TYPE_PERIOD = [
 ]
 
 export const OPTIONS_STANDARD = [
-  {value: "", text: ""},
   {value: "RSBU", text: "РСБУ"},
   {value: "IFRS", text: "МСФО"},
   {value: "GAAP", text: "US GAAP"},
