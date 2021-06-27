@@ -1,4 +1,4 @@
-import { sortRoutes } from '@nuxt/utils'
+import {sortRoutes} from '@nuxt/utils'
 
 export default {
   mode: 'universal',
@@ -8,20 +8,20 @@ export default {
   head: {
     title: process.env.npm_package_name || '',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {color: '#fff'},
   /*
    ** Global CSS
    */
@@ -32,7 +32,7 @@ export default {
     // 'tabulator-tables/dist/css/bootstrap/tabulator_bootstrap4.min.css',
     // 'tabulator-tables/dist/css/semantic-ui/tabulator_semantic-ui.min.css',
     // 'tabulator-tables/dist/css/tabulator_simple.min.css'
-],
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -75,8 +75,8 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
-          user: { url: '/auth/user', method: 'get', propertyName: 'user' },
+          login: {url: '/auth/login', method: 'post', propertyName: 'token'},
+          user: {url: '/auth/user', method: 'get', propertyName: 'user'},
           logout: false
         }
       }
@@ -85,9 +85,7 @@ export default {
       home: '/'
     }
   },
-  router: {
-
-  },
+  router: {},
   /*
    ** Build configuration
    */
@@ -95,6 +93,7 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+    }
   }
 }

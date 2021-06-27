@@ -9,42 +9,42 @@
 </template>
 
 <script>
-  import { ADMIN_PERIODS } from "~/assets/js/constants/breadcrumb";
+import {ADMIN_PERIODS} from "~/assets/js/constants/breadcrumb";
 
-  export default {
-    data() {
-      return {
-        periodTable: [],
-        options: {
-          layout:"fitColumns",
-          selectable: 1,
-          columns: [
-            {title:"#", field:"id", sorter:"string"},
-            {title:"Начало", field:"startPeriod", sorter:"date"},
-            {title:"Окончание", field:"endPeriod", sorter:"date"},
-            {title:"Тип периода", field:"type", sorter:"string"},
-          ],
-        }
-      }
-    },
-    async asyncData({$axios, store}) {
-      store.commit('breadcrumb/set', ADMIN_PERIODS)
-      let { data } = await $axios.get(`/admin/periods`)
-      return {periodTable: data}
-    },
-    methods: {
-      deleteRow() {
-        var adminPeriodTableInstance = this.$refs.adminPeriodTable.getInstance();
-        var id = adminPeriodTableInstance.getSelectedData()[0].id;
-        this.$axios.delete(`/admin/periods/${id}`)
-          .then((response) => {
-              var indexOfRow = this.periodTable.findIndex(row => row.id === id)
-              this.periodTable.splice(indexOfRow, 1)
-            }
-          )
+export default {
+  data() {
+    return {
+      periodTable: [],
+      options: {
+        layout: "fitColumns",
+        selectable: 1,
+        columns: [
+          {title: "#", field: "id", sorter: "string"},
+          {title: "Начало", field: "startPeriod", sorter: "date"},
+          {title: "Окончание", field: "endPeriod", sorter: "date"},
+          {title: "Тип периода", field: "type", sorter: "string"},
+        ],
       }
     }
+  },
+  async asyncData({$axios, store}) {
+    store.commit('breadcrumb/set', ADMIN_PERIODS)
+    let {data} = await $axios.get(`/admin/periods`)
+    return {periodTable: data}
+  },
+  methods: {
+    deleteRow() {
+      var adminPeriodTableInstance = this.$refs.adminPeriodTable.getInstance();
+      var id = adminPeriodTableInstance.getSelectedData()[0].id;
+      this.$axios.delete(`/admin/periods/${id}`)
+        .then((response) => {
+            var indexOfRow = this.periodTable.findIndex(row => row.id === id)
+            this.periodTable.splice(indexOfRow, 1)
+          }
+        )
+    }
   }
+}
 </script>
 
 

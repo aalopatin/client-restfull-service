@@ -36,9 +36,9 @@
           :state="$v.form.password.$dirty ? !$v.form.password.$error : null"
           aria-describedby="password-live-feedback"
           placeholder="Введите пароль"
-          ></b-form-input>
-          <b-form-invalid-feedback id="password-live-feedback">
-            Пароль не может быть пустым!
+        ></b-form-input>
+        <b-form-invalid-feedback id="password-live-feedback">
+          Пароль не может быть пустым!
         </b-form-invalid-feedback>
       </b-form-group>
       <b-form-group id="password-confirm-group" label="Подтверждение пароля:" label-for="password-confirm">
@@ -74,70 +74,70 @@
 </template>
 
 <script>
-  import { validationMixin } from 'vuelidate'
-  import { required, email, sameAs } from 'vuelidate/lib/validators'
-  import VueRecaptcha from 'vue-recaptcha'
+import {validationMixin} from 'vuelidate'
+import {required, email, sameAs} from 'vuelidate/lib/validators'
+import VueRecaptcha from 'vue-recaptcha'
 
-  export default {
-    layout: 'empty-form',
-    components: {
-      VueRecaptcha
-    },
-    mixins: [validationMixin],
-    data() {
-      return {
-        form: {
-          username: "",
-          email: "",
-          password: "",
-          passwordConfirm: "",
-          recaptchaToken: ""
-        },
-        errors: [],
-        sitekey: "6Ldbo7kUAAAAAOESy3Ki4Jvhcly6_oVXGf_3bXB4"
-      }
-    },
-    validations: {
+export default {
+  layout: 'empty-form',
+  components: {
+    VueRecaptcha
+  },
+  mixins: [validationMixin],
+  data() {
+    return {
       form: {
-        username: {
-          required
-        },
-        password: {
-          required
-        },
-        passwordConfirm: {
-          required,
-          sameAsPassword: sameAs('password')
-        },
-        email: {
-          required,
-          email
-        }
-      }
-    },
-    methods: {
-      onSubmit(event) {
-        this.form.recaptchaToken = ''
-        this.errors = []
-        this.$refs.recaptcha.execute()
+        username: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+        recaptchaToken: ""
       },
-      register(recaptchaToken) {
-        this.form.recaptchaToken = recaptchaToken
-        this.$v.form.$touch()
-        if (this.$v.form.$anyError) {
-          return
-        }
-        this.$axios.post('/registration', this.form)
-          .then((response) => {
-            this.$router.push('/')
-          }).catch(({response}) => {
-            this.errors = response.data.subErrors
-            this.$refs.recaptcha.reset()
-          })
+      errors: [],
+      sitekey: "6Ldbo7kUAAAAAOESy3Ki4Jvhcly6_oVXGf_3bXB4"
+    }
+  },
+  validations: {
+    form: {
+      username: {
+        required
       },
-      onCaptchaExpired() {
-        this.$refs.recaptcha.reset()
+      password: {
+        required
+      },
+      passwordConfirm: {
+        required,
+        sameAsPassword: sameAs('password')
+      },
+      email: {
+        required,
+        email
       }
     }
+  },
+  methods: {
+    onSubmit(event) {
+      this.form.recaptchaToken = ''
+      this.errors = []
+      this.$refs.recaptcha.execute()
+    },
+    register(recaptchaToken) {
+      this.form.recaptchaToken = recaptchaToken
+      this.$v.form.$touch()
+      if (this.$v.form.$anyError) {
+        return
+      }
+      this.$axios.post('/registration', this.form)
+        .then((response) => {
+          this.$router.push('/')
+        }).catch(({response}) => {
+        this.errors = response.data.subErrors
+        this.$refs.recaptcha.reset()
+      })
+    },
+    onCaptchaExpired() {
+      this.$refs.recaptcha.reset()
+    }
   }
+}
 </script>
